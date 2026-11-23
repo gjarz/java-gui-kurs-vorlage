@@ -1,0 +1,5 @@
+# Kopiere diese Datei nach "db.properties" (im selben Ordner) und trage deine Werte ein.
+# Die Datei "db.properties" kommt nie ins Repository (steht in der .gitignore).
+url=jdbc:mariadb://localhost:3306/haushalt
+user=schueler
+password=

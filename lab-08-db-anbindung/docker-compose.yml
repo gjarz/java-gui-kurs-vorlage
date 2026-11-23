@@ -1,0 +1,22 @@
+# Startet einen MariaDB-Server für Lab 08.
+#   Start:        docker compose up -d
+#   Stopp:        docker compose down
+#   Neu beginnen: docker compose down -v   (löscht alle Daten)
+# Skripte im Ordner ./init laufen beim allerersten Start automatisch.
+services:
+  db:
+    image: mariadb:11
+    container_name: scott-db
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: scott
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  db-data:
